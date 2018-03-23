@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+    </div>
+    <div class="col-lg-4 col-md-6" style="background-color: lightblue;padding: 25px 25px 25px 25px;border-radius: 15px;">
+
+<% if (current_usuario.id == @usuario.id) || (current_usuario.admin) %>
+
+<h2>Editar Usuario</h2>
+
+<%= render 'form', usuario: @usuario %>
+
+<%= link_to 'Exibir', @usuario %> |
+<%= link_to 'Voltar', usuarios_path %>
+
+
+    </div>
+    <div class="col col-lg-2">
+    </div>
+  </div>
+</div>
+<% else %>
+<% end %>

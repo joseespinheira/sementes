@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  resources :users
+# em breve alterar isso para apontar para a pagina inicial
+  root 'usuarios#index'
+  
+  devise_for :usuarios
+  resources :plantas
+  resources :usuarios
+  
+  
+  
+  # usuario.sign_in_count
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

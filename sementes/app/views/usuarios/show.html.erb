@@ -1,0 +1,67 @@
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+    </div>
+    <div class="col-lg-4 col-md-6" style="background-color: lightblue;padding: 25px 25px 25px 25px;border-radius: 15px;">
+
+<p id="notice"><%= notice %></p>
+<% if usuario_signed_in? %>
+  <% if current_usuario==@usuario or current_usuario.admin==true %>
+  
+  <p><strong><h3>Dados da conta:</h1></strong></p>
+  
+    <p>
+      <strong>E-mail:</strong>
+      <%= @usuario.email %>
+    </p>
+    
+    <p>
+      <strong>Nome:</strong>
+      <%= @usuario.nome %>
+    </p>
+    
+    <p>
+      <strong>Cpf:</strong>
+      <%= @usuario.cpf %>
+    </p>
+    
+    <p>
+      <strong>Data nascimento:</strong>
+      <%= @usuario.data_nascimento %>
+    </p>
+    
+    <p>
+      <strong>Perfil:</strong>
+      <%= @usuario.perfil %>
+    </p>
+    
+    <p>
+      <strong>Ponto:</strong>
+      <%= @usuario.ponto %>
+    </p>
+    
+    <% if current_usuario.admin==true %>
+      <p>
+        <strong>Admin:</strong>
+        <%= @usuario.admin %>
+      </p>
+    <% end %>
+    
+    <p>
+      <strong>Ultimo acesso:</strong><br>
+      Data: <%= @usuario.current_sign_in_at.strftime("%v") %><br>
+      IP: <%= @usuario.current_sign_in_ip %>
+    </p>
+         
+  <% end %>
+<% end %>
+<%= link_to 'Editar', edit_usuario_path(@usuario) %> |
+<%= link_to 'Voltar', usuarios_path %>
+
+    </div>
+    <div class="col col-lg-2">
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<% if usuario_signed_in? %>
+  <% if ( current_usuario.admin == true) %>
+    
+    <h1>Usuarios</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Cpf</th>
+          <th>Perfil</th>
+          <th>Data nascimento</th>
+          <th>Ponto</th>
+          <th>Admin</th>
+          <th>Criado em</th>
+          <th>Atualizado em</th>
+          <th>E-mail</th>
+          <!--th>Senha</th-->
+          <th>Token reset</th>
+          <th>Data do reset password</th>
+          <th>Relembre data</th>
+          <th>entrar cont</th>
+          <th>ultimo acesso</th>
+          <th>Antes deste</th>
+          <th>IP</th>
+          <th>ultimo IP</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @usuarios.each do |usuario| %>
+          <tr>
+            <td>--<%= usuario.id %></td>
+            <td>*<%= usuario.nome %></td>
+            <td><%= usuario.cpf.para_formato_cpf %></td>
+            <td>//<%= usuario.perfil %></td>
+            <td><%= usuario.data_nascimento %></td>
+            <td>--<%= usuario.ponto %></td>
+            <td>**<%= usuario.admin %></td>
+            <td>--<%= usuario.created_at %></td>
+            <td>--<%= usuario.updated_at %></td>
+            <td>*<%= usuario.email %></td>
+            <!--td>*<%= usuario.encrypted_password %></td-->
+            <td>--<%= usuario.reset_password_token %></td>
+            <td>--<%= usuario.reset_password_sent_at %></td>
+            <td>--<%= usuario.remember_created_at %></td>
+            <td>--<%= usuario.sign_in_count %></td>
+            <td>--<%= usuario.current_sign_in_at %></td>
+            <td>--<%= usuario.last_sign_in_at %></td>
+            <td>--<%= usuario.current_sign_in_ip %></td>
+            <td>--<%= usuario.last_sign_in_ip %></td>
+            <td><%= link_to 'Show', usuario %></td>
+            <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
+            <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <br>
+    
+    <%= link_to 'New Usuario', new_usuario_path %>
+    
+  <% else %>
+    <% if current_usuario.cpf==nil %>
+      <!--Redireciona para editar-->
+    <% else %>
+      <!--Teoricamente tudo ok-->
+    <% end %>
+  <% end %>
+<% end %>

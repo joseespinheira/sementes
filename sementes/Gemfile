@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -16,12 +16,12 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Gem para controle de autenticação
 gem 'devise'
-# Gem para controle de acesso simplificado.
-gem 'cancancan'
 # Gem para cpf - https://github.com/jacksonpires/cpf_utils
 gem 'cpf_utils'
 # Gem para validação de CPF - https://github.com/fnando/cpf_cnpj
-#gem "cpf_cnpj"
+gem "cpf_cnpj"
+# Gem para facilitar a produção http://www.rubydoc.info/gems/slim/frames#What_is_Slim_
+gem 'slim'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,0 +1,59 @@
+<%= form_for(usuario) do |f| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+      <% usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label "Nome" %>
+    <%= f.text_field :nome, {required: true} %>
+  </div>
+  
+  <% if current_usuario.cpf==nil %>
+  <div class="field">
+    <%= f.label "CPF" %>
+    <%= f.text_field :cpf, {required: true} %>
+  </div>
+  <% else %>
+  <div class="field">
+    <%= f.label "CPF" %>
+    <%= f.text_field :cpf, disabled: true %>
+  </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label "Data Nascimento" %>
+    <%= f.date_select :data_nascimento, {order: [:day, :month, :year], prompt: { day: 'Dia', month: 'Mês', year: 'Ano' }, start_year: Date.today.year - 5, end_year: Date.today.year - 100}, {required: true} %>
+  </div>
+
+<!--Isso pode ser tratado em varios pontos-->
+  <div class="field">
+    <%= f.label :perfil %>
+    <%= f.number_field :perfil %>
+  </div>
+
+<!-- Isso será tratado ao longo do percurso do sistema
+  <div class="field">
+    <%= f.label :ponto %>
+    <%= f.number_field :ponto %>
+  </div>
+-->
+
+  <% if current_usuario.admin==true %>
+    <div class="field">
+      <%= f.label :admin %>
+      <%= f.check_box :admin %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
